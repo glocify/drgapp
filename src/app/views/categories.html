@@ -1,0 +1,58 @@
+<div class="container-fluid categories-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 float-right">
+            <div class="row search-box-row text-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <img ng-click="vm.goBack()" class="back-btn" ng-src="./assets/images/back-btn.png">
+                    <search-box></search-box>
+                    <!--<div class="input-group search-box">
+                        <input type="text" class="form-control" ng-model="vm.keyword" ng-keyup="vm.onKeyUp()" placeholder="{{translate('Search for...')}}">
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary"
+                                type="button"
+                                ng-click="vm.getData()">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 full-content-height">
+            <div class="container-fluid height-1 padding-top-10">
+                <div class="row height-1">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 height-3"
+                         ng-repeat="cate in vm.foodcates"
+                         ng-click="vm.openRestaurants(cate.id)">
+                        <img class="img-responsive category-image height-80p" ng-src="{{cate.image}}">
+                        <div class="category-title">{{translate(cate.title)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ads-wrapper height-1">
+            <div class="row text-center height-45p">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 height-1 video-wrapper">
+                    <script src="//ads.aerserv.com/as/?plc=1001286&key=1&cb=&appversion=&adid=&network=&carrier=&dnt=&ip=&make=&model=&os=&osv=&type=&lat=&long=&locationsource=&ua=&mraid=&coppa=&age=&yob=&gender="></script>
+
+                    <!--<video-ads id="categoryVideoAds"></video-ads>-->
+                    <!--<a ng-href="https://www.lyft.com/invited/xudera" target="_blank">
+                        <img class="ads-image" ng-src="{{vm.staticImages[0]}}">
+                    </a>-->
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 height-1">
+                    <a ng-href="{{vm.categoryLink}}" target="_blank">
+                        <img class="ads-image" ng-src="{{vm.staticImages[1]}}">
+                    </a>
+                </div>
+            </div>
+            <div class="row text-center height-55p">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 height-1">
+                    <a ng-href="{{vm.categoryLink}}" target="_blank">
+                        <img class="ads-image" ng-src="{{vm.dynamicImages[vm.imageInd]}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

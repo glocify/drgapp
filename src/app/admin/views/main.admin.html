@@ -1,0 +1,28 @@
+<div class="container-fluid restaurant-admin-container">
+    <div class="row">
+        <div class="navigators-div">
+            <button type="button" class="btn btn-primary new-btn" ng-click="vm.saveData()">Save</button>
+        </div>
+    </div>
+    <form class="form-group">
+        <div class="row">
+            <div class="col-sm-6" ng-repeat="i in [1,2] track by $index">
+                <label class="col-sm-3 col-form-label">Static Ads{{i}}</label>
+                <div class="col-sm-9">
+                    <input type="file" fileinput="file" filepreview="vm.staticImages[$index]"/>
+                    <img ng-src="{{vm.staticImages[$index]}}" class="img-responsive preview-img margin-top-20" ng-show="vm.staticImages[$index]"/>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-sm-4" ng-repeat="i in [1,2,3] track by $index">
+                <label class="col-sm-3 col-form-label">Dynamic Ads{{i}}</label>
+                <div class="col-sm-9">
+                    <input type="file" fileinput="file" filepreview="vm.dynamicImages[$index]"/>
+                    <img ng-src="{{vm.dynamicImages[$index]}}" class="img-responsive preview-img margin-top-20" ng-show="vm.dynamicImages[$index]"/>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

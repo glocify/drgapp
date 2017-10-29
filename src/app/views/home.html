@@ -1,0 +1,10 @@
+<div class="home-container">
+    <img class="landing-bg" src="./assets/images/landing-bg.jpg" ng-click="vm.openFoodlist()">
+
+    <select class="form-control lang-box" ng-model="vm.langInd" ng-change="vm.chooseLanguage()">
+        <option ng-repeat="lang in languages" value="{{$index}}">{{lang}}</option>
+    </select>
+
+    <search-box></search-box>
+
+</div>

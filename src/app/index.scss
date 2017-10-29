@@ -1,0 +1,575 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+div, span, input, button, a, li, p, h1, h2, h3, h4, h5, h6, img, tr, td {
+  &:focus, &:active {
+    outline: 0 !important;
+  }
+}
+
+div {
+  &.container-fluid, &.container, &.row, &.col-md-0, &.col-md-1, &.col-md-2, &.col-md-3, &.col-md-4, &.col-md-5, &.col-md-6, &.col-md-7, &.col-md-8, &.col-md-9, &.col-md-10, &.col-md-11, &.col-md-12 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  background: black;
+}
+
+body {
+  //overflow: hidden;
+  /*-webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;*/
+  //background: black;
+}
+
+footer {
+  .copyright-div {
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background: black;
+    padding: 2px;
+    border-top: 1px solid white;
+    color: white;
+    height: 30px;
+    a {
+      color: white;
+    }
+  }
+}
+
+.height-1 {
+  height: 100%;
+}
+
+.height-2 {
+  height: 50%;
+}
+
+.height-3 {
+  height: 33.33%;
+}
+
+.height-3-2 {
+  height: 66.67%;
+}
+
+.height-4 {
+  height: 25%;
+}
+
+.height-5 {
+  height: 20%;
+}
+
+.height-5-4 {
+  height: 80%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-content-height {
+  height: calc(100vh - 30px);
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.height-45p {
+  height: 45%;
+}
+
+.height-55p {
+  height: 55%;
+}
+
+.height-80p {
+  height: 80%;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.padding-top-10 {
+  padding-top: 10px !important;
+}
+
+// -------------------- for pages -----------------------
+.search-box {
+  border: 3px solid white;
+  border-radius: 7px;
+  box-shadow: 0px 2px 5px #444;
+}
+
+.back-btn {
+  width: 40px;
+  float: right;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.home-container {
+  height: calc(100vh - 30px); // 30px is for height of the footer.
+  //animation: fadein 2s;
+
+  .landing-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+
+  .lang-box {
+    width: 200px;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: 28vh;
+    border: 4px solid #337ab7;
+    height: 45px;
+    box-shadow: 0px 2px 5px #444;
+  }
+
+  .search-box {
+    width: 250px;
+    position: absolute;
+    left: calc(50% - 125px);
+    top: 62vh;
+  }
+}
+
+.categories-container {
+  background: #000;
+
+  .search-box-row {
+    padding: 10px 0 20px 0;
+
+    .search-box {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+  }
+
+  .foodcate-div {
+    padding: 4px;
+  }
+  .category-image {
+    width: 95%;
+    max-height: 30vh;
+    margin: auto;
+    border: 5px solid white;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px #444;
+  }
+  .category-title {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-shadow: 0px 2px 5px #444;
+  }
+  .ads-wrapper {
+    height: calc(100vh - 100px);
+  }
+  .ads-div {
+    padding: 0 5px 10px 5px;
+    .ads-image {
+      width: 100%;
+    }
+  }
+  .ads-image, .ads-video {
+    width: 100%;
+    height: 100%;
+    border: 5px solid black;
+  }
+
+}
+
+.restaurants-container {
+  background: #000;
+
+  .search-box-row {
+    padding: 10px 0 20px 0;
+
+    .search-box {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+  }
+
+  .rest-div {
+    height: 20%;
+    text-align: center;
+    cursor: pointer;
+
+    .restaurant-image {
+      max-height: 100%;
+      min-height: 100%;
+      width: 100%;
+      border: 5px solid black;
+    }
+
+    .rest-title-div {
+      margin-top: -60px;
+      color: lightseagreen;
+    }
+  }
+  .ads-image, .ads-video {
+    width: 100%;
+    height: 100%;
+    border: 5px solid black;
+  }
+  .video-wrapper {
+    overflow: hidden;
+  }
+  .ads-video {
+    width: auto;
+  }
+
+  .ads-image-fixed {
+    width: 100%;
+    height: 100%;
+    border: 5px solid black;
+  }
+
+  .ads-wrapper {
+    height: calc(100vh - 100px);
+  }
+
+  .address-div {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 7px;
+    position: absolute;
+    bottom: 10px;
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    font-size: 12px;
+    padding: 2px 5px;
+  }
+
+  .paginator-div {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    cursor: auto;
+
+    .prev-button, .next-button {
+      width: 30%;
+      display: inline-block;
+      float: left;
+      cursor: pointer;
+    }
+
+    .prev-img, .next-img, .page-num-img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .page-num-div {
+      width: 40%;
+      display: inline-block;
+      float: left;
+      font-size: 6em;
+      color: black;
+    }
+  }
+
+}
+
+/*@keyframes fadein {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}*/
+.detail-container {
+  background: #000;
+  //animation: fadein 2s;
+  //height: 100vh;
+
+  .search-box-row {
+    padding: 10px 0 20px 0;
+
+    .search-box {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+  }
+
+  .block-cell {
+    padding: 4px;
+
+    .bordered {
+      background: black;
+      color: white;
+      border: 1px solid lightgrey;
+      height: 100%;
+    }
+  }
+  .maininfo-div {
+    padding-top: 5px;
+    height: 100%;
+    .maininfo-img {
+      border-right: 1px solid lightgrey;
+      width: 100%;
+    }
+    .detail-logo-img {
+      border-bottom: 1px solid lightgrey;
+    }
+  }
+  .price-div {
+    height: 100%;
+    padding-left: 0;
+    .video-wrapper {
+      overflow: hidden;
+    }
+    .ads-video {
+      height: 100%;
+      //margin-left: -10%;
+    }
+  }
+  .no-div {
+    height: 100%;
+  }
+  .url-div {
+    height: 100%;
+  }
+  .promo-div {
+    height: 100%;
+  }
+  .review-div {
+    height: 100%;
+  }
+  .map-div {
+    height: 100%;
+  }
+  .ads-cell {
+    height: 25%;
+    .ads-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .detail-logo-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .write-up-div {
+    padding: 10px;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .buttons-div {
+    padding: 0;
+  }
+
+  .right-container {
+    height: calc(100vh - 100px);
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .buttons-div button {
+    padding: 10px 2px;
+    font-size: 10px;
+  }
+}
+
+.admin-container {
+  padding-top: 10px !important;
+
+  .navigators-div .pagination {
+    margin: 0;
+  }
+  .new-btn {
+    //margin-top: -25px;
+    margin-bottom: 5px;
+    float: right;
+  }
+  .tab-content {
+    padding: 10px;
+  }
+  .controls-td {
+    a {
+      cursor: pointer;
+    }
+  }
+}
+
+.category-admin-container {
+
+}
+
+.restaurant-admin-container {
+  .category-sel {
+    width: 200px;
+    display: inline-block;
+  }
+  .restaurants-sel {
+    width: 200px;
+    display: inline-block;
+  }
+}
+
+.ads-admin-container {
+
+}
+
+.modal-body {
+  .row {
+    padding: 10px 0;
+    label {
+      margin-top: 5px;
+    }
+  }
+  .preview-img {
+    max-width: 200px;
+  }
+}
+
+td .thumb-img {
+  max-height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .categories-container {
+    .category-title {
+      font-size: 18px;
+    }
+    .category-image {
+      border-width: 1px;
+    }
+  }
+
+  .landing-bg {
+    min-width: 1000px;
+    left: calc((100vw - 1000px) / 2);
+  }
+}
+
+.pac-container {
+  //z-index: 1200 !important;
+}
+
+.reservation-btn {
+  background: green;
+  border: 1px solid green;
+  &:hover {
+    background: darkgreen;
+    border-color: darkgreen;
+  }
+}
+
+.btn-rect {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.padding-left-0 {
+  padding-left: 0 !important;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.padding-left-10 {
+  padding-left: 10px !important;
+}
+
+.margin-10 {
+  margin: 10px !important;
+}
+
+.margin-top-5 {
+  margin-top: 5px !important;
+}
+
+.margin-top-10 {
+  margin-top: 10px !important;
+}
+
+.margin-top-20 {
+  margin-top: 20px !important;
+}
+
+.border-0 {
+  border-width: 0 !important;
+}
+
+.min-height-500 {
+  min-height: 500px;
+}
+
+.max-height-150 {
+  max-height: 150px;
+}
+
+.border-left {
+  border-left: 1px solid grey;
+}
+.travelmode_cls{color: #000;}

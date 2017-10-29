@@ -1,0 +1,133 @@
+<div class="container-fluid restaurant-admin-container">
+    <div class="row">
+        <div class="navigators-div">
+            <label>Category:</label>
+            <select class="form-control category-sel"
+                    ng-model="vm.category" ng-change="vm.getRestaurants()">
+                <option ng-repeat="cate in vm.categories" value="{{cate.id}}">{{cate.title}}</option>
+            </select>&nbsp;&nbsp;
+            <label>Restaurant:</label>
+            <select class="form-control restaurants-sel"
+                    ng-model="vm.restaurant"
+                    ng-change="vm.getData()">
+                <option ng-repeat="rest in vm.restaurants" value="{{rest.id}}">{{rest.restaurant_name}}</option>
+            </select>
+            <button type="button" class="btn btn-primary new-btn" ng-click="vm.openModal(0)">Add New</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive table-hover">
+                <thead>
+                <tr bgcolor="#cee7ff">
+                    <th class="text-center">No</th>
+                    <th class="text-center">Sign</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Latitude/Longtitude</th>
+                    <th class="text-center">City</th>
+                    <th class="text-center">State</th>
+                    <th class="text-center">Zip code</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Time</th>
+                    <th class="text-center">Cost</th>
+                    <th class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-dblclick="vm.openModal(row.id)" ng-repeat="(key, row) in vm.tableData">
+                    <td class="text-center">{{$index + 1}}</td>
+                    <td class="text-center">{{row.sign}}</td>
+                    <td class="text-center">{{row.address}}</td>
+                    <td class="text-center">{{row.lat}}/{{row.lng}}</td>
+                    <td class="text-center">{{row.city}}</td>
+                    <td class="text-center">{{row.state}}</td>
+                    <td class="text-center">{{row.zip_code}}</td>
+                    <td class="text-center">{{row.phone}}</td>
+                    <td class="text-center">{{row.time_val}}</td>
+                    <td class="text-center">{{row.cost}}</td>
+                    <td class="text-center controls-td">
+                        <a ng-click="vm.openModal(row.id)">Edit</a> /
+                        <a ng-click="vm.deleteData(row.id)">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center" ng-if="vm.isNoData">There is no data.</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="address_form.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-data">Edit Restaurant Info</h3>
+    </div>
+    <div class="modal-body" id="modal-body-data">
+        <form class="form-group">
+            <div class="form-group row">
+                <label for="sign" class="col-sm-3 col-form-label">Sign</label>
+                <div class="col-sm-9">{{vm.sign}}
+                    <input type="text" class="form-control" id="sign" ng-model="vm.data.sign" placeholder="Sign">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="city" class="col-sm-3 col-form-label">City</label>
+                <div class="col-sm-9">{{vm.city}}
+                    <input type="text" class="form-control" id="city" ng-model="vm.data.city" placeholder="City">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Address</label>
+                <!--<div class="col-sm-9">{{vm.address}}
+                    <input type="text" class="form-control" id="address" ng-model="vm.data.address" placeholder="Address">
+                </div>-->
+                <div class="col-sm-9">{{vm.address}}
+                    <location-picker id="location-picker"
+                                     ng-model="vm.location"
+                                     placeholder="Address"
+                                     ng-required="true">
+                    </location-picker>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="state" class="col-sm-3 col-form-label">State</label>
+                <div class="col-sm-9">{{vm.state}}
+                    <input type="text" class="form-control" id="state" ng-model="vm.data.state" placeholder="State">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="zip_code" class="col-sm-3 col-form-label">Zip Code</label>
+                <div class="col-sm-9">{{vm.zip_code}}
+                    <input type="text" class="form-control" id="zip_code" ng-model="vm.data.zip_code"
+                           placeholder="Zip Code">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="phone" class="col-sm-3 col-form-label">Phone</label>
+                <div class="col-sm-9">{{vm.phone}}
+                    <input type="text" class="form-control" id="phone" ng-model="vm.data.phone" placeholder="Phone">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="time_val" class="col-sm-3 col-form-label">Time</label>
+                <div class="col-sm-9">{{vm.time_val}}
+                    <input type="text" class="form-control" id="time_val" ng-model="vm.data.time_val"
+                           placeholder="Time">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="cost" class="col-sm-3 col-form-label">Cost</label>
+                <div class="col-sm-9">{{vm.cost}}
+                    <input type="text" class="form-control" id="cost" ng-model="vm.data.cost" placeholder="Cost">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="vm.save()">Save</button>
+                        <button class="btn btn-default" ng-click="vm.close()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

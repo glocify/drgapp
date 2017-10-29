@@ -1,0 +1,124 @@
+<div class="container-fluid category-admin-container">
+    <div class="row">
+        <div class="navigators-div text-right">
+            <!--<ul class="pagination-sm"
+                uib-pagination
+                items-per-page="vm.itemsPerPage"
+                total-items="vm.allTablePages"
+                ng-model="vm.currTablePage"
+                max-size="5"
+                boundary-link-numbers="true"
+                rotate="false"
+                ng-change="vm.onPaginationChange()"></ul>-->
+            <button type="button" class="btn btn-primary new-btn" ng-click="vm.openModal(0)">Add New</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive table-hover">
+                <thead>
+                <tr bgcolor="#cee7ff">
+                    <th class="text-center">No</th>
+                    <th class="text-center">Title</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Static Ads</th>
+                    <th class="text-center">Ads 1</th>
+                    <th class="text-center">Ads 2</th>
+                    <th class="text-center">Ads 3</th>
+                    <th class="text-center">Link</th>
+                    <th class="text-center">Manage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-dblclick="vm.openModal(row.id)" ng-repeat="(key, row) in vm.tableData">
+                    <td class="text-center">{{$index + 1}}</td>
+                    <td class="text-center">{{row.title}}</td>
+                    <td class="text-center">
+                        <img class="thumb-img" ng-src="{{row.image}}" alt="">
+                    </td>
+                    <td class="text-center">
+                        <img class="thumb-img" ng-src="{{row.ads_image}}" alt="">
+                    </td>
+                    <td class="text-center">
+                        <img class="thumb-img" ng-src="{{row.ads_image1}}" alt="">
+                    </td>
+                    <td class="text-center">
+                        <img class="thumb-img" ng-src="{{row.ads_image2}}" alt="">
+                    </td>
+                    <td class="text-center">
+                        <img class="thumb-img" ng-src="{{row.ads_image3}}" alt="">
+                    </td>
+                    <td class="text-center">{{row.comment}}</td>
+                    <td class="text-center controls-td">
+                        <a ng-click="vm.openModal(row.id)">Edit</a> /
+                        <a ng-click="vm.deleteData(row.id)">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center" ng-if="vm.isNoData">There is no data.</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="category_form.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-data">Edit Restaurant Category</h3>
+    </div>
+    <div class="modal-body" id="modal-body-data">
+        <form class="form-group">
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Category title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" ng-model="vm.data.title" placeholder="Category title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-2 col-form-label">Link</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="comment" ng-model="vm.data.comment" placeholder="Link">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.image"/>
+                    <img ng-src="{{vm.data.image}}" class="img-responsive preview-img" ng-show="vm.data.image"/>
+                </div>
+                <label class="col-sm-2 col-form-label">Fix Ads Image</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.ads_image"/>
+                    <img ng-src="{{vm.data.ads_image}}" class="img-responsive preview-img" ng-show="vm.data.ads_image"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Ads 1</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.ads_image1"/>
+                    <img ng-src="{{vm.data.ads_image1}}" class="img-responsive preview-img" ng-show="vm.data.ads_image1"/>
+                </div>
+
+                <label class="col-sm-2 col-form-label">Ads 2</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.ads_image2"/>
+                    <img ng-src="{{vm.data.ads_image2}}" class="img-responsive preview-img" ng-show="vm.data.ads_image2"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Ads 3</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.ads_image3"/>
+                    <img ng-src="{{vm.data.ads_image3}}" class="img-responsive preview-img" ng-show="vm.data.ads_image3"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="vm.save()">Save</button>
+                        <button class="btn btn-default" ng-click="vm.close()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

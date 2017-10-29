@@ -1,0 +1,64 @@
+<div class="container-fluid restaurants-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 float-right">
+            <div class="row search-box-row text-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <img ng-click="vm.goBack()" class="back-btn" ng-src="./assets/images/back-btn.png">
+                    <search-box keyword="vm.keyword"></search-box>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 full-content-height">
+            <div class="container-fluid height-1">
+                <div class="row height-1">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row-5 rest-div"
+                         ng-repeat="fake in [1,1,1,1,1,1,1,1,1,1,1,1,1,1] track by $index"
+                         ng-if="!vm.restaurants.length">
+                        <img class="img-responsive restaurant-image" ng-src="./assets/images/no.jpg">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row-5 rest-div"
+                         ng-repeat="rest in vm.restaurants[vm.currentPage]"
+                         ng-click="vm.openRestDetail(rest.id)">
+                        <img class="img-responsive restaurant-image" ng-src="{{rest.image}}" title="{{rest.restaurant_name}} {{rest.address}}">
+                        <div class="address-div" ng-if="rest.id">{{rest.address}}</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row-5 rest-div">
+                        <img class="img-responsive restaurant-image" ng-src="./assets/images/no.jpg" title="{{rest.restaurant_name}} {{rest.address}}">
+                        <div class="paginator-div height-1">
+                            <div class="prev-button height-1">
+                                <img class="prev-img" ng-click="vm.prevPage()" ng-src="{{vm.paginator.prev_btn}}">
+                            </div>
+                            <div class="page-num-div height-1">
+                                <img class="page-num-img" ng-src="./assets/images/page-1.png" ng-show="vm.currentPage == 0">
+                                <img class="page-num-img" ng-src="./assets/images/page-2.png" ng-show="vm.currentPage == 1">
+                                <img class="page-num-img" ng-src="./assets/images/page-3.png" ng-show="vm.currentPage == 2">
+                            </div>
+                            <div class="next-button height-1">
+                                <img class="next-img" ng-click="vm.nextPage()" ng-src="{{vm.paginator.next_btn}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ads-wrapper">
+            <div class="row text-center height-45p">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 height-1 video-wrapper">
+                    <a ng-href="https://www.lyft.com/invited/xudera" target="_blank">
+                        <img class="img-responsive ads-image" ng-src="./assets/images/ads/7.jpg">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 height-1">
+                    <a ng-href="{{vm.categoryLink}}" target="_blank">
+                        <img class="img-responsive ads-image" ng-src="{{vm.fixedAdsImage}}">
+                    </a>
+                </div>
+            </div>
+            <div class="row text-center height-55p">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 height-1">
+                    <img class="img-responsive ads-image-fixed" ng-src="{{vm.cateAdsImages[vm.adsInd]}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+<div class="container-fluid restaurant-admin-container">
+    <div class="row">
+        <div class="navigators-div">
+            <label>Category:</label>
+            <select class="form-control category-sel"
+                    ng-model="vm.category" ng-change="vm.getData()">
+                <option ng-repeat="cate in vm.categories" value="{{cate.id}}">{{cate.title}}</option>
+            </select>
+            <button type="button" class="btn btn-primary new-btn" ng-click="vm.openModal(0)">Add New</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive table-hover">
+                <thead>
+                <tr bgcolor="#cee7ff">
+                    <th class="text-center">No</th>
+                    <th class="text-center">Restarant Name</th>
+                    <th class="text-center">Write up</th>
+                    <th class="text-center">Delivery website</th>
+                    <th class="text-center">Menu website</th>
+                    <th class="text-center">Deliverable?</th>
+                    <th class="text-center">Logo</th>
+                    <th class="text-center">Outside</th>
+                    <th class="text-center">Menu</th>
+                    <th class="text-center">Coupon</th>
+                    <th class="text-center">Manage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-dblclick="vm.openModal(row.id)" ng-repeat="(key, row) in vm.tableData">
+                    <td class="text-center">{{$index + 1}}</td>
+                    <td class="text-center">{{row.restaurant_name}}</td>
+                    <td class="text-center">{{row.write_up}}</td>
+                    <td class="text-center">{{row.delivery_website}}</td>
+                    <td class="text-center">{{row.menu_website}}</td>
+                    <td class="text-center">{{row.rest_type == 0 ? 'Yes' : 'No'}}</td>
+                    <td class="text-center"><img class="thumb-img" ng-src="{{row.image}}"></td>
+                    <td class="text-center"><img class="thumb-img" ng-src="{{row.o_image}}"></td>
+                    <td class="text-center"><img class="thumb-img" ng-src="{{row.menu_image}}"></td>
+                    <td class="text-center"><img class="thumb-img" ng-src="{{row.coupon_image}}"></td>
+                    <td class="text-center controls-td">
+                        <a ng-click="vm.openModal(row.id)">Edit</a> /
+                        <a ng-click="vm.deleteData(row.id)">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center" ng-if="vm.isNoData">There is no data.</div>
+        </div>
+    </div>
+    <!--<div class="row text-right">
+        <ul class="pagination-sm"
+            uib-pagination
+            items-per-page="vm.itemsPerPage"
+            total-items="vm.allTablePages"
+            ng-model="vm.currTablePage"
+            max-size="5"
+            boundary-link-numbers="true"
+            rotate="false"
+            ng-change="vm.onPaginationChange()"></ul>
+    </div>-->
+</div>
+
+<script type="text/ng-template" id="restaurant_form.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-data">Edit Restaurant Info</h3>
+    </div>
+    <div class="modal-body" id="modal-body-data">
+        <form class="form-group">
+            <div class="form-group row">
+                <label for="restaurant_name" class="col-sm-3 col-form-label">Restaurant name</label>
+                <div class="col-sm-9">{{vm.restaurant_name}}
+                    <input type="text" class="form-control" id="restaurant_name" ng-model="vm.data.restaurant_name" placeholder="Restaurant name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="write_up" class="col-sm-3 col-form-label">Write up</label>
+                <div class="col-sm-9">{{vm.write_up}}
+                    <textarea class="form-control" id="write_up" ng-model="vm.data.write_up" placeholder="Write up" rows="3">
+                        {{vm.writeup}}
+                    </textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="delivery_website" class="col-sm-3 col-form-label">Delivery or Reservation</label>
+                <div class="col-sm-9">{{vm.delivery_website}}
+                    <input type="text" class="form-control" id="delivery_website" ng-model="vm.data.delivery_website" placeholder="Delivery or Reservation">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="delivery_website" class="col-sm-3 col-form-label">Menu website</label>
+                <div class="col-sm-9">{{vm.menu_website}}
+                    <input type="text" class="form-control" id="menu_website" ng-model="vm.data.menu_website" placeholder="Menu website">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="delivery_website" class="col-sm-3 col-form-label">Deliverable?</label>
+                <div class="col-sm-9">{{vm.rest_type}}
+                    <select class="form-control" ng-model="vm.data.rest_type">
+                        <option value="0">Yes</option>
+                        <option value="1">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.image"/>
+                    <img ng-src="{{vm.data.image}}" class="img-responsive preview-img" ng-show="vm.data.image"/>
+                </div>
+                <label class="col-sm-2 col-form-label">Inside Image</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.o_image"/>
+                    <img ng-src="{{vm.data.o_image}}" class="img-responsive preview-img" ng-show="vm.data.o_image"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Menu Image</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.menu_image"/>
+                    <img ng-src="{{vm.data.menu_image}}" class="img-responsive preview-img" ng-show="vm.data.menu_image"/>
+                </div>
+                <label class="col-sm-2 col-form-label">Coupon Image</label>
+                <div class="col-sm-4">
+                    <input type="file" fileinput="file" filepreview="vm.data.coupon_image"/>
+                    <img ng-src="{{vm.data.coupon_image}}" class="img-responsive preview-img" ng-show="vm.data.coupon_image"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="vm.save()">Save</button>
+                        <button class="btn btn-default" ng-click="vm.close()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

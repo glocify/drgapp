@@ -1,0 +1,11 @@
+<div class="container-fluid admin-container">
+    <uib-tabset>
+        <uib-tab index="$index + 1"
+                ng-repeat="tab in vm.tabs"
+                heading="{{tab.heading}}"
+                active="tab.active"
+                select="vm.selectTab(tab)">
+            <div ui-view="tabContent" class="min-height-500"></div>
+        </uib-tab>
+    </uib-tabset>
+</div>
